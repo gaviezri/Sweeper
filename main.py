@@ -1,7 +1,7 @@
 import os.path
 from constants import *
 from collections import defaultdict
-from shutil import copy
+from shutil import move
 
 
 # list all the files and items that exist under PATH
@@ -53,11 +53,7 @@ def main():
         if not os.path.exists(new_path):
             os.mkdir(new_path)
         for item in bins[extension]:
-            copy(item, create_new_file_name(item, extension))
-            try:
-                os.remove(item)
-            except:
-                pass
+            move(item, create_new_file_name(item, extension))
 
 
 
